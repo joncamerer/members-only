@@ -4,6 +4,10 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
+  def logged_in?
+    !current_user.nil?
+  end
+  
   def remember_user(user)
     user.create_remember_token
     cookies.permanent[:remember_token] = user.remember_token
