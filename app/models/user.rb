@@ -9,11 +9,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
-end
-
-private
 
   def create_remember_token
     token = SecureRandom.urlsafe_base64
     self.remember_token = Digest::SHA1.hexdigest(token.to_s)
   end
+end
