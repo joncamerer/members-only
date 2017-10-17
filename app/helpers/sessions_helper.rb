@@ -21,4 +21,10 @@ module SessionsHelper
   def current_user=(user)
     @current_user = user
   end
+
+  def log_out
+    cookies.delete(:remember_token)
+    session.delete(:user_id)
+    @current_user = nil
+  end
 end
