@@ -12,6 +12,6 @@ class User < ApplicationRecord
 
   def create_remember_token
     token = SecureRandom.urlsafe_base64
-    self.remember_token = Digest::SHA1.hexdigest(token.to_s)
+    self.update_attribute(:remember_token, Digest::SHA1.hexdigest(token.to_s))
   end
 end
